@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_200"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:background="@color/red"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.ethan.tooldemo.view.TransformRadioGroup
+            android:id="@+id/id_transform_group"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white_halt_transparent"
+            android:layout_gravity="bottom"
+            >
+
+        </com.ethan.tooldemo.view.TransformRadioGroup>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/id_banner_pager"
+        android:layout_width="match_parent"
+        android:layout_height="269dp"
+        android:background="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.ethan.tooldemo.view.CustomRadioGroup
+        android:id="@+id/id_stroke_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.ethan.tooldemo.view.OvalButton
+        android:id="@+id/id_stroke_text"
+        android:layout_width="99dp"
+        android:layout_height="22dp"
+        android:text="test"
+        app:layout_constraintTop_toBottomOf="@+id/id_stroke_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.ethan.tooldemo.view.BottomNavigationViewWrapper
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
