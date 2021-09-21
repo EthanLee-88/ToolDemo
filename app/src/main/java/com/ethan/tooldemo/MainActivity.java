@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         customRadioGroup.setButtonBackgroundColor(R.color.teal_200, R.color.gray);
         customRadioGroup.setStrokeBackground(new String[]{"one","two"}, 88, 28);
 
+
         pages.add(getPage());
         pages.add(getPage());
         pages.add(getPage());
