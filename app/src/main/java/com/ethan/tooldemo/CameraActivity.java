@@ -19,8 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.ethan.tooldemo.util.AESEncrypt;
+
 import java.io.File;
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.util.Arrays;
 
 public class CameraActivity extends AppCompatActivity {
@@ -43,8 +46,32 @@ public class CameraActivity extends AppCompatActivity {
             checkPermission();
         });
         two.setOnClickListener((View view) -> {
-            getPicture();
+//            Log.d(TAG,"md5 = " + generateMd5("123456ccc"));
+            aesTest();
         });
+    }
+
+    private void aesTest(){
+       String en = AESEncrypt.encrypt("jiangnanchun00", "jiangnan");
+       Log.d(TAG, "en = " + en);
+       String de = AESEncrypt.decrypt(en, "jiangnan");
+       Log.d(TAG, "de = " + de);
+    }
+
+    private synchronized static String generateMd5(String s) {
+        try {
+            byte[] btInput = s.getBytes();
+            MessageDigest mdInst = MessageDigest.getInstance("MD5");
+            mdInst.update(btInput);
+            byte[] md = mdInst.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : md) {
+                sb.append(String.format("%02X", b&0xff));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            return s;
+        }
     }
 
     private void checkPermission() {
