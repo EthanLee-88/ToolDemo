@@ -33,6 +33,12 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+
+import com.ethan.tooldemo.R;
+
 
 /**
  * 源代码来自 https://github.com/hdodenhof/CircleImageView
@@ -75,7 +81,7 @@ public class CircleImageView extends ImageView {
 
     private boolean mReady;
     private boolean mSetupPending;
-    private boolean mBorderOverlay;
+    private boolean mBorderOverlay = false;
     private boolean mDisableCircularTransformation;
 
     private boolean isCircleEnabled = true; // 是否启用圆形
@@ -93,14 +99,14 @@ public class CircleImageView extends ImageView {
     public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0);
+//        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0);
 
-        mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_civ_border_width, DEFAULT_BORDER_WIDTH);
-        mBorderColor = a.getColor(R.styleable.CircleImageView_civ_border_color, DEFAULT_BORDER_COLOR);
-        mBorderOverlay = a.getBoolean(R.styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY);
-        mFillColor = a.getColor(R.styleable.CircleImageView_civ_fill_color, DEFAULT_FILL_COLOR);
+//        mBorderWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_civ_border_width, DEFAULT_BORDER_WIDTH);
+//        mBorderColor = a.getColor(R.styleable.CircleImageView_civ_border_color, DEFAULT_BORDER_COLOR);
+//        mBorderOverlay = a.getBoolean(R.styleable.CircleImageView_civ_border_overlay, DEFAULT_BORDER_OVERLAY);
+//        mFillColor = a.getColor(R.styleable.CircleImageView_civ_fill_color, DEFAULT_FILL_COLOR);
 
-        a.recycle();
+//        a.recycle();
 
         init();
     }

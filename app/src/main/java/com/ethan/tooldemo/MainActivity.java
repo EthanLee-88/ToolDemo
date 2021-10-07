@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -55,17 +56,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void checkedChange(RadioGroup group, int checkedId) {
                 Log.d("tag", "checkedId- = " + checkedId);
-                if (checkedId == 1){
+                if (checkedId == 1) {
                     countDownTimer.cancel();
                     countDownTimer.setMillisInFuture(countDownTimer.getMillisInFuture() + 5000);
-                }else {
+                } else {
                     countDownTimer.start();
                 }
             }
         });
 
         customRadioGroup.setButtonBackgroundColor(R.color.teal_200, R.color.gray);
-        customRadioGroup.setStrokeBackground(new String[]{"one","two"}, 88, 28);
+        customRadioGroup.setStrokeBackground(new String[]{"one", "two"}, 88, 28);
 
 
         pages.add(getPage());
@@ -81,8 +82,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 Log.d("tag", "item = " + item.getItemId());
-                if (item.getItemId() == R.id.navigation_notifications)
-                return false;
+                if (item.getItemId() == R.id.navigation_notifications) {
+                    startActivity(new Intent(MainActivity.this, CameraActivity.class));
+                    return false;
+                }
+                if (item.getItemId() == R.id.navigation_home) {
+                    startActivity(new Intent(MainActivity.this, TestActivity.class));
+                    return false;
+                }
+                if (item.getItemId() == R.id.navigation_dashboard) {
+                    startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+                    return false;
+                }
                 return true;
             }
         });
@@ -90,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     MyCountDownTimer countDownTimer;
-    private void test(){
+
+    private void test() {
         countDownTimer = new MyCountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -105,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    private View getPage(){
+    private View getPage() {
         TextView textView = new TextView(this);
         textView.setText("test");
         textView.setTextSize(28);
