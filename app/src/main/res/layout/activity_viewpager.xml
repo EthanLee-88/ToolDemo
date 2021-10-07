@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+ <androidx.viewpager2.widget.ViewPager2
+     android:id="@+id/id_view_pager2"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     />
+
+ <com.ethan.tooldemo.adapter.MyBottomNavigationView
+     android:id="@+id/nav_view_for_pager"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:background="?android:attr/windowBackground"
+     app:labelVisibilityMode="labeled"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintLeft_toLeftOf="parent"
+     app:layout_constraintRight_toRightOf="parent"
+     app:menu="@menu/bottom_nav_menu_view_pager2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
