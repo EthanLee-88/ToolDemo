@@ -6,11 +6,13 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ethan.tooldemo.R;
+
 public class FragmentUtils {
     public static void addFragment(FragmentManager fragmentManager, Fragment fragment) {
         if (fragment != null && fragmentManager != null) {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.add(R.id.fragment_container, fragment);
+//            transaction.add(R.id.fragment_container, fragment);
             transaction.commit();
         }
     }
@@ -18,7 +20,7 @@ public class FragmentUtils {
     public static void replaceFragment(FragmentManager fragmentManager, Fragment fragment) {
         if (fragment != null && fragmentManager != null) {
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.fragment_container, fragment);
+//            transaction.replace(R.id.fragment_container, fragment);
             transaction.addToBackStack(fragment.getClass().getSimpleName());
             transaction.commit();
         }
@@ -29,7 +31,7 @@ public class FragmentUtils {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.addSharedElement(view1,t1);
 //        transaction.addSharedElement(view2,t2);
-        transaction.replace(R.id.fragment_container, fragment);
+//        transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(fragment.getClass().getSimpleName());
         transaction.commit();
 
