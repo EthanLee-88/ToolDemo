@@ -45,7 +45,7 @@ import com.ethan.tooldemo.R;
  * 修改于2018/11/23，增加方形ImageView的显示与切换，默认为圆形ImageView
  * 增加两个方法{@link #enableCircleImageView(boolean)} 和 {@link #isCircleImageViewEnabled()}
  */
-public class CircleImageView extends ImageView {
+public class CircleImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -177,7 +177,10 @@ public class CircleImageView extends ImageView {
         if (mFillColor != Color.TRANSPARENT) {
             canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mFillPaint);
         }
-        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mBitmapPaint);
+//        canvas.drawCircle(mDrawableRect.centerX(), mDrawableRect.centerY(), mDrawableRadius, mBitmapPaint);
+
+        RectF rectF = new RectF(0, 0, getWidth(), getHeight());
+        canvas.drawRoundRect(rectF, 60 , 60, mBitmapPaint);
         if (mBorderWidth > 0) {
             canvas.drawCircle(mBorderRect.centerX(), mBorderRect.centerY(), mBorderRadius, mBorderPaint);
         }
