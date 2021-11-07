@@ -20,6 +20,7 @@ public class TypePopWindow {
     public TypePopWindow(Context context) {
         mContext = context;
         basePopWindow = new BasePopWindow(context, initView());
+        basePopWindow.setBackgroundDrawable(null);
     }
 
     private View initView() {
