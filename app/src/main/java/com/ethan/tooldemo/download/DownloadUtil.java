@@ -7,6 +7,9 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 public class DownloadUtil {
 
@@ -85,5 +88,26 @@ public class DownloadUtil {
             file.delete();
         }catch (Exception e){
         }
+    }
+
+    public static String genMD5(File file) {
+        String r = null;
+        if (file == null || !file.isFile() || !file.exists()) {
+            return r;
+        }
+        FileInputStream in = null;
+        byte buffer[] = new byte[1024];
+        int len;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");  //MessageDigest
+            in = new FileInputStream(file);
+            while ((len = in.read(buffer, 0, 1024)) != -1) {  //循环读取
+                md.update(buffer, 0, len);  //填充
+            }
+            in.close();
+            r = String.format("%032x", new BigInteger(1, md.digest()));  //转换成16进制
+        } catch (Exception e) {
+        }
+        return r;
     }
 }
