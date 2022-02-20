@@ -4,10 +4,15 @@ import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
@@ -109,5 +114,35 @@ public class DownloadUtil {
         } catch (Exception e) {
         }
         return r;
+    }
+
+    private void downLoadAPKFile(ResponseBody responseBody) {
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "auction-download.apk");
+
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            if (!file.exists()) file.createNewFile();
+            inputStream = responseBody.byteStream();
+            outputStream = new FileOutputStream(file);
+            int count = 0;
+            int progress = 0;
+            long fileSize = responseBody.contentLength();
+            byte[] bytes = new byte[1024];
+            while ((count = inputStream.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, count);
+                progress += count;
+                Log.d(TAG, "progress = " + progress + " - fileSize = " + fileSize + " - count = " + count);
+            }
+        } catch (IOException ioException) {
+            Log.d(TAG, "ioException = " + ioException.getMessage());
+        } finally {
+            try {
+                if (inputStream != null) inputStream.close();
+                if (outputStream != null) outputStream.close();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
     }
 }
