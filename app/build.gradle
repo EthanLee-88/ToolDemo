@@ -44,4 +44,9 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     implementation 'com.github.lzyzsd:jsbridge:1.0.4'
+
+//    implementation(name: 'pager_view_1.0.0', ext: 'aar') //
+
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+//    implementation 'com.squareup.picasso:picasso:2.5.2'
 }
