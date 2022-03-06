@@ -140,6 +140,7 @@ public class TImageListBgView extends RelativeLayout {
         horizontalScrollView.setOnScrollToIndexListen(new com.ethan.pagerview.ui.TPageHorizatalScrollView.OnScrollToIndexListen() {
             @Override
             public void scrollToIndex(int index) {
+                if (animationIV == null) return;
                 currentIndex = index;
                 if (currentIndex >= imageIds.size()){
                     currentIndex = imageIds.size() - 1;
@@ -223,6 +224,7 @@ public class TImageListBgView extends RelativeLayout {
             PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofInt("alpha", 0, 255);
             valueAnimator.setValues(leftHolder, topHolder, widthHolder, heightHolder, alphaHolder);
         } else {
+            if (animationIV == null) return;
 //            setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
             gridViewBgView.setVisibility(INVISIBLE);
             pageControl.setVisibility(INVISIBLE);
@@ -251,6 +253,7 @@ public class TImageListBgView extends RelativeLayout {
             @Override
             public synchronized void onAnimationUpdate(ValueAnimator animation) {
                 //                mTransfrom.scale = (Float) animation.getAnimatedValue("scale");
+                if (animationIV == null) return;
                 Float left = (Float) animation.getAnimatedValue("left");
                 Float top = (Float) animation.getAnimatedValue("top");
                 Float width = (Float) animation.getAnimatedValue("width");
@@ -283,6 +286,7 @@ public class TImageListBgView extends RelativeLayout {
                  * ， 而应该是最后变化的位置，因为当out的时候结束时，不回复视图是Normal，要不然会有一个突然闪动回去的bug
                  */
                 // TODO 这个可以根据实际需求来修改
+                if (animationIV == null) return;
                 if (mState == TScallImageView.STATE_TRANSFORM_IN) {
                     horizontalScrollView.baseSmoothScrollTo(0);
                     setBackgroundColor(Color.BLACK);
