@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/id_pager_two_main_layout"
+    android:background="@color/teal_700"
+    >
+
+    <com.ethan.tooldemo.photo.PhotoView
+        android:id="@+id/id_view_pager_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:background="@color/teal_200"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
